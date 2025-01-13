@@ -26,10 +26,12 @@ const searchImages = async function (query) {
       }));
       return output;
     } else {
+      const message = await response.text();
+      console.log(`Error: ${message}`);
       return [];
     }
   } catch (err) {
-    console.log(`Fetch unsplash api error: ${err}`);
+    console.log(`Fetch Unsplash api error: ${err}`);
     return [];
   }
 };
