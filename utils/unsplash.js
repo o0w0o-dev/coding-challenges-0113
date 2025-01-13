@@ -24,7 +24,7 @@ const searchImages = async function (query) {
         source: "Unsplash",
         tags: [],
       }));
-      return output;
+      return output ? output : [];
     } else {
       const message = await response.text();
       console.log(`Error: ${message}`);

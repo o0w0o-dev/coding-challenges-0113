@@ -44,7 +44,7 @@ const searchImages = async function (query) {
         source: "Storyblocks",
         tags: [],
       }));
-      return output;
+      return output ? output : [];
     } else {
       const message = await response.text();
       console.log(`Error: ${message}`);
