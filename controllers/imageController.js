@@ -1,17 +1,16 @@
 "use strict";
 
+import { AppError } from "../utils/appError.js";
+import { catchAsync } from "../utils/catchAsync.js";
 import * as pixabay from "../utils/pixabay.js";
 import * as storyblocks from "../utils/storyblocks.js";
 import * as unsplash from "../utils/unsplash.js";
 
-const searchImages = async (req, res, next) => {
+const searchImages = catchAsync(async (req, res, next) => {
   const { query } = req.query;
 
   if (!query) {
-    return res.status(400).json({
-      status: "fail",
-      message: "Invalid query",
-    });
+    return next(new AppError("Invalid query", 400));
   }
 
   const fulfilled = await Promise.all([
@@ -26,6 +25,6 @@ const searchImages = async (req, res, next) => {
     status: "success",
     data,
   });
-};
+});
 
 export { searchImages };
