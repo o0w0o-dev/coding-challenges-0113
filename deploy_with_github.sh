@@ -30,7 +30,10 @@ export CONTAINER_NAME=$CONTAINER_NAME
 export AWS_PROFILE=pantheonlab
 
 # check if sops is installed and available in the user's PATH # TODO
-command -v sops
+SOPS_PATH=$(command -v sops)
+echo "sops is located at: $SOPS_PATH"
+CURRENT_USER=$(whoami)
+echo "The currently logged-in user is: $CURRENT_USER"
 
 sops --decrypt --encryption-context Role:image-search-development-sops-role ./ansible/$ENV/secrets.enc.env > .env
 
