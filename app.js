@@ -1,10 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
+import { globalErrorHandler } from "./controllers/errorController.js";
 import { router as imageRouter } from "./routes/imageRoutes.js";
 import { router as userRouter } from "./routes/userRoutes.js";
+import swaggerDocs from "./utils/swagger.js";
 
 const app = express();
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 const DB_URI = process.env.DB_URI;
 
 mongoose
@@ -16,6 +18,8 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
+app.use(express.json());
+swaggerDocs(app, PORT);
 app.use("/api/v1/images", imageRouter);
 app.use("/api/v1/users", userRouter);
 
@@ -30,6 +34,8 @@ app.all("*", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.use(globalErrorHandler);
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
