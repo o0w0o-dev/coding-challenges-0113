@@ -39,5 +39,8 @@ docker rm -f ${CONTAINER_NAME} || true
 
 # docker pull image
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 708425621425.dkr.ecr.us-east-1.amazonaws.com
+docker build -t o0w0o/image-search .
+docker tag o0w0o/image-search:latest $ECR_IMAGE
+docker push $ECR_IMAGE
 docker pull $ECR_IMAGE
 docker run -d -p 4000:4000 $ECR_IMAGE
