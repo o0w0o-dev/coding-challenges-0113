@@ -29,6 +29,9 @@ fi
 export CONTAINER_NAME=$CONTAINER_NAME
 export AWS_PROFILE=pantheonlab
 
+# add sops in path
+export PATH=$PATH:/home/ec2-user/go/bin
+
 # check if sops is installed and available in the user's PATH # TODO
 WHICH_SOPS=$(which sops)
 echo "sops is : $SOPS_PATH"
