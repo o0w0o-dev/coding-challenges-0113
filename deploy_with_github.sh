@@ -48,4 +48,4 @@ docker build -t o0w0o/image-search .
 docker tag o0w0o/image-search:latest $ECR_IMAGE
 docker push $ECR_IMAGE
 docker pull $ECR_IMAGE
-docker run -d -name $CONTAINER_NAME -p 4000:4000 $ECR_IMAGE
+docker run -d --name $CONTAINER_NAME -p 4000:4000 $ECR_IMAGE
