@@ -13,7 +13,7 @@ FOLDER_NAME="image-search"
 CONTAINER_NAME="image-search"
 ECR_IMAGE="708425621425.dkr.ecr.us-east-1.amazonaws.com/o0w0o/image-search:latest"
 
-# cd /home/ec2-user/apps/$FOLDER_NAME
+cd /home/ec2-user/apps/$FOLDER_NAME
 
 LOCAL_FOLDER_PATH=$(pwd)
 
@@ -30,6 +30,9 @@ export CONTAINER_NAME=$CONTAINER_NAME
 export AWS_PROFILE=pantheonlab
 
 sops --decrypt --encryption-context Role:image-search-development-sops-role ./ansible/$ENV/secrets.enc.env > .env
+
+# remove container if running
+docker rm -f ${CONTAINER_NAME} || true
 
 # docker pull image
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 708425621425.dkr.ecr.us-east-1.amazonaws.com
