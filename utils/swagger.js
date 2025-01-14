@@ -91,6 +91,18 @@ const spec = {
         },
       },
     },
+    "/users/logout": {
+      get: {
+        tags: ["users"],
+        summary: "User logout",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          200: {
+            description: "Successful operation",
+          },
+        },
+      },
+    },
     "/images": {
       get: {
         tags: ["images"],
