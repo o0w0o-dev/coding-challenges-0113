@@ -70,18 +70,18 @@ https://github.com/o0w0o-dev/coding-challenges-0113
 
 ### API Development Tasks
 
-🎉 Create API route for image search
-🎉 Integrate Unsplash API in app
-🎉 Integrate Pixabay API in app
-🎉 Integrate Storyblocks API in app
-🎉 Implement asynchronous API calls
-🎉 Handle errors from API calls
-🎉 Compile results into an object array
+🎉 Create API route for image search<br />
+🎉 Integrate Unsplash API in app<br />
+🎉 Integrate Pixabay API in app<br />
+🎉 Integrate Storyblocks API in app<br />
+🎉 Implement asynchronous API calls<br />
+🎉 Handle errors from API calls<br />
+🎉 Compile results into an object array<br />
 
 ### Optional Tasks
 
-🎉 Implement user authentication feature
-😐 Use GraphQL instead of REST
-🎉 Build application as a Docker image
-🎉 Deploy application to cloud services
-😐 Optimize application for high request volume
+🎉 Implement user authentication feature<br />
+😐 Use GraphQL instead of REST<br />
+🎉 Build application as a Docker image<br />
+🎉 Deploy application to cloud services<br />
+😐 Optimize application for high request volume<br />
