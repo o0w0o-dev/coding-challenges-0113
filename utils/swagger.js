@@ -10,10 +10,10 @@ const spec = {
   },
   servers: [
     {
-      url: "http://localhost:4000/api/v1",
+      url: "http://ec2-54-160-205-156.compute-1.amazonaws.com:4000/api/v1",
     },
     {
-      url: "http://ec2-54-160-205-156.compute-1.amazonaws.com:4000/api/v1",
+      url: "http://localhost:4000/api/v1",
     },
   ],
   tags: [
