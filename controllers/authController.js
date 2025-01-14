@@ -35,7 +35,24 @@ const login = catchAsync(async (req, res, next) => {
   if (!user || !isCorrect)
     return next(new AppError("Incorrect email or password", 401));
 
+  user.lastLogout = Date.now() - 1500;
+  await user.save({ validateBeforeSave: false });
+
   responseWithUser(user, 200, res);
+});
+
+const logout = catchAsync(async (req, res, next) => {
+  const id = req.user._id;
+  const user = await User.findById(id);
+  if (!user) return next(new AppError("User not found", 404));
+
+  user.lastLogout = Date.now();
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: "success",
+    message: "You logged out successfully.",
+  });
 });
 
 const protect = catchAsync(async (req, res, next) => {
@@ -62,7 +79,7 @@ const protect = catchAsync(async (req, res, next) => {
 
   if (freshUser.checkExpires(decoded.iat)) {
     return next(
-      new AppError("You are not logged in! Please log in to get access", 401)
+      new AppError("Login expired! Please log in to get access", 401)
     );
   }
 
@@ -70,7 +87,5 @@ const protect = catchAsync(async (req, res, next) => {
 
   next();
 });
-
-const logout = catchAsync(async (req, res, next) => {});
 
 export { signup, login, logout, protect };
