@@ -65,3 +65,23 @@ https://github.com/o0w0o-dev/coding-challenges-0113
 |  9   | Search image                                                                 | Success         |
 |  10  | Create user with email and password in step 2                                | Fail            |
 |  11  | Login user with email in step 2, with wrong password "StrongPassword456"     | Fail            |
+
+## Home Assignment
+
+### API Development Tasks
+
+🎉 Create API route for image search
+🎉 Integrate Unsplash API in app
+🎉 Integrate Pixabay API in app
+🎉 Integrate Storyblocks API in app
+🎉 Implement asynchronous API calls
+🎉 Handle errors from API calls
+🎉 Compile results into an object array
+
+### Optional Tasks
+
+🎉 Implement user authentication feature
+😐 Use GraphQL instead of REST
+🎉 Build application as a Docker image
+🎉 Deploy application to cloud services
+😐 Optimize application for high request volume
