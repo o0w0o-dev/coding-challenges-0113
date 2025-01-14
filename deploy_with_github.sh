@@ -29,6 +29,9 @@ fi
 export CONTAINER_NAME=$CONTAINER_NAME
 export AWS_PROFILE=pantheonlab
 
+# check if sops is installed and available in the user's PATH # TODO
+command -v sops
+
 sops --decrypt --encryption-context Role:image-search-development-sops-role ./ansible/$ENV/secrets.enc.env > .env
 
 # remove container if running
