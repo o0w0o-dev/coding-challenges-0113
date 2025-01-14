@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
       message: "Passwords are not the same",
     },
   },
-  loginExpirationDate: Date,
+  lastLogout: Date,
 });
 
 // encrypt password for user creation
@@ -58,9 +58,14 @@ userSchema.methods.correctPassword = async function (
 };
 
 userSchema.methods.checkExpires = function (JWTTimestamp) {
-  if (this.loginExpirationDate) {
-    const loginExpiredTimestamp = this.loginExpirationDate.getTime();
-    return JWTTimestamp * 1000 > loginExpiredTimestamp;
+  if (this.lastLogout) {
+    const lastLogoutTimestamp = this.lastLogout.getTime();
+    // console.log({
+    //   lastLogoutTimestamp,
+    //   JWTTimestamp: JWTTimestamp * 1000,
+    //   result: JWTTimestamp * 1000 < lastLogoutTimestamp,
+    // });
+    return JWTTimestamp * 1000 < lastLogoutTimestamp;
   }
 
   return false;
